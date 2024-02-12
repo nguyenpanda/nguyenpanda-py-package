@@ -1,32 +1,3 @@
-Metadata-Version: 2.1
-Name: nguyenpanda
-Version: 0.1.5
-Summary: Welcome to the world of 'nguyenpanda', a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.
-Home-page: https://github.com/nguyenpanda
-Author: Tường Nguyên Hà
-Author-email: hatuongnguyen0107@gmail.com
-License: MIT
-Project-URL: Source Code, https://github.com/nguyenpanda/PyPackages
-Keywords: nguyenpanda tuong nguyen hcmut panda
-Classifier: Development Status :: 2 - Pre-Alpha
-Classifier: License :: OSI Approved :: MIT License
-Classifier: Intended Audience :: Developers
-Classifier: Intended Audience :: Education
-Classifier: Intended Audience :: Science/Research
-Classifier: Programming Language :: Python :: 3.5
-Classifier: Programming Language :: Python :: 3.6
-Classifier: Programming Language :: Python :: 3.7
-Classifier: Programming Language :: Python :: 3.8
-Classifier: Programming Language :: Python :: 3.9
-Classifier: Programming Language :: Python :: 3.10
-Classifier: Programming Language :: Python :: 3.11
-Classifier: Programming Language :: Python :: 3.12
-Classifier: Topic :: Software Development :: Libraries :: Python Modules
-Requires-Python: >=3.5
-Description-Content-Type: text/markdown
-Requires-Dist: numpy
-Requires-Dist: requests
-
 # nguyenpanda
 
 [![PyPI version](https://badge.fury.io/py/nguyenpanda.svg)](https://badge.fury.io/py/nguyenpanda)

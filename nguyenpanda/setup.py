@@ -10,7 +10,7 @@ def read(file_name: str) -> str:
 # noinspection PyInterpreter
 setup(
     name='nguyenpanda',
-    version='0.1.2',
+    version='0.1.5',
     author='Tường Nguyên Hà',
     author_email='hatuongnguyen0107@gmail.com',
     description='Welcome to the world of \'nguyenpanda\', a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.',
@@ -19,6 +19,7 @@ setup(
     url='https://github.com/nguyenpanda',
     packages=find_packages(),
     long_description=read('README.md'),
+    long_description_content_type='text/markdown',
     install_requires=[
         'numpy',
         'requests'
