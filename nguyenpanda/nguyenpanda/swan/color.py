@@ -1,4 +1,3 @@
-import sys
 from sys import stdout
 from typing import Dict, Literal, IO
 

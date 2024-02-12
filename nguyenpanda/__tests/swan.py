@@ -1,7 +1,8 @@
-import pytest, sys
-from nguyenpanda.nguyenpanda.swan import Color, ColorClass
+import sys
+from nguyenpanda.swan import Color
 
-def __test_slicing():
+
+def __test_slicing() -> None:
     print(Color['RED'] + 'Tuong Nguyen Khoai To' + Color.reset)
     print(Color['r'] + 'Tuong Nguyen Khoai Rat To' + Color.reset)
     print(Color['rEd'] + 'Tuong Nguyen Khoai Rat Rat To' + Color.reset)
@@ -9,7 +10,7 @@ def __test_slicing():
     print(Color['reD'] + 'Tuong Nguyen Khoai Rat Rat Rat To' + Color.reset)
 
 
-def __test_printColor():
+def __test_printColor() -> None:
     dict_color: tuple = ('rEd', 'gREEn', 'Yellow', 'bLUE', 'pUrpLe', 'c')
 
     for i in range(21, 81):

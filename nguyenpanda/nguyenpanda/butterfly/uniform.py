@@ -9,7 +9,7 @@ class Uniform:
         self.__seed: int | float = seed if seed is not None else (
                 int(str(time.time()).split('.')[1]) + 13 * os.getpid() & 0xFFFFFFFF
         )
-        self.__state: int | float = seed
+        self.__state: int | float = self.__seed
 
         self.__w: int = 65432
         self.__b: int = 0
@@ -29,18 +29,16 @@ class Uniform:
             yield self.__state
 
 
-
-
 if __name__ == "__main__":
     from nguyenpanda.swan import Color
 
-    Color.printColor('--- Swan - Uniform ---', color=Color.BLUE)
+    Color.printColor('--- Swan - Uniform ---', color=Color['b'])
 
     w = 214013
     b = 2531011
     m = 2 ** 31
 
-    seed = time.time()
+    __seed = time.time()
 
 
     def cal(i):
@@ -48,7 +46,7 @@ if __name__ == "__main__":
 
 
     for _ in range(100):
-        seed = cal(seed)
-        print(seed / m)
+        __seed = cal(__seed)
+        print(__seed / m)
 
-    Color.printColor('--- Swan - Uniform ---', color=Color.GREEN)
+    Color.printColor('--- Swan - Uniform ---', color=Color['g'])
