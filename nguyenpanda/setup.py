@@ -1,21 +1,15 @@
 from setuptools import setup, find_packages
+import info
 
 # noinspection PyInterpreter
 setup(
     name='nguyenpanda',
-    version='0.1.0',
-    description='nguyenpanda libray contains some utility package',
-    long_description='''
-    - butterfly: random packages
-    - owl: mathematical packages
-    - swan: beautiful packages
-    ''',
-    url='https://github.com/nguyenpanda',
+    version=info.__version__,
+    description=info.__description__,
+    long_description=info.long_description,
+    url=info.__url__,
     packages=find_packages(),
-    author='Tuong Nguyen Ha',
-    author_email='nguyen.hatuong0107@hcmut.edu',
-    install_requires=[
-        'numpy',
-        'requests'
-    ],
+    author=info.__author__,
+    author_email=info.__email__,
+    install_requires=info.install_requires
 )

@@ -20,7 +20,7 @@ which symbolizes:
     - swan: beautiful packages
 '''
 
-__url__ = 'https://github.com/nguyenpanda'
+__url__ = 'https://github.com/nguyenpanda/PyPackages.git'
 
 __author__ = 'Tuong Nguyen Ha'
 
