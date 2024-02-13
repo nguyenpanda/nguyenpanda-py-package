@@ -17,7 +17,7 @@ setup(
     license='MIT',
     keywords='nguyenpanda tuong nguyen hcmut panda',
     url='https://github.com/nguyenpanda',
-    packages=find_packages(),
+    packages=find_packages('nguyenpanda'),
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     install_requires=[

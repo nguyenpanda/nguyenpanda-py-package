@@ -12,7 +12,7 @@ test:
 		python $${test_root_directory}$$file; \
 	done
 
-check: test mypy
+big_check: test mypy
 
 local:
 	@echo "\033[1;92mpip install -e\033[0m"
