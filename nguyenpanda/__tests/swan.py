@@ -1,6 +1,6 @@
 import sys
 
-from nguyenpanda.swan import Color
+from nguyenpanda.nguyenpanda.swan import Color
 
 
 def __test_slicing() -> None:

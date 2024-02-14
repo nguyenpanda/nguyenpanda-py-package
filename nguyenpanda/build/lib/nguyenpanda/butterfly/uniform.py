@@ -23,30 +23,8 @@ class Uniform:
     def parameters(self) -> Tuple[int, int, int]:
         return self.__w, self.__b, self.__m
 
-    def __LinearCongruentialGenerator(self) -> Generator:
+    def _LinearCongruentialGenerator(self) -> Generator:
         while True:
             self.__state = (self.__w * self.__state + self.__b) % self.__m
             yield self.__state
 
-
-if __name__ == "__main__":
-    from nguyenpanda.swan import Color
-
-    Color.printColor('--- Swan - Uniform ---', color=Color['b'])
-
-    w = 214013
-    b = 2531011
-    m = 2 ** 31
-
-    __seed = time.time()
-
-
-    def cal(i):
-        return (w * i + b) % m
-
-
-    for _ in range(100):
-        __seed = cal(__seed)
-        print(__seed / m)
-
-    Color.printColor('--- Swan - Uniform ---', color=Color['g'])
