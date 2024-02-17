@@ -22,7 +22,10 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'numpy',
-        'requests'
+        'pydantic',
+        'requests',
+        'typing-extensions',
+        'urllib3',
     ],
     project_urls={
         'Source Code': 'https://github.com/nguyenpanda/PyPackages',

@@ -1,5 +1,5 @@
-from nguyenpanda.USELESS.uniform import Uniform
+from .RandomORG import RandomORG
 
 __all__ = [
-    'Uniform',
+    "RandomORG",
 ]

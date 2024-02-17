@@ -6,10 +6,10 @@ nguyenpanda.egg-info/SOURCES.txt
 nguyenpanda.egg-info/dependency_links.txt
 nguyenpanda.egg-info/requires.txt
 nguyenpanda.egg-info/top_level.txt
-nguyenpanda/butterfly/__connect-random-org.py
 nguyenpanda/butterfly/__init__.py
-nguyenpanda/butterfly/random.org.py
-nguyenpanda/butterfly/uniform.py
+nguyenpanda/butterfly/RandomORG/__init__.py
+nguyenpanda/butterfly/RandomORG/random_org.py
+nguyenpanda/butterfly/RandomORG/random_org_validator.py
 nguyenpanda/owl/__init__.py
 nguyenpanda/swan/__init__.py
 nguyenpanda/swan/color.py

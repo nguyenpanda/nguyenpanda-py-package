@@ -1,6 +1,7 @@
 import sys
 
-from nguyenpanda.nguyenpanda.swan import Color
+# noinspection PyUnresolvedReferences
+from nguyenpanda.swan import Color
 
 
 def __test_slicing() -> None:
