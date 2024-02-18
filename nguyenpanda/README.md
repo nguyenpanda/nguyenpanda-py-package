@@ -23,16 +23,16 @@ Ascend to mastery in calculus, conquer the realms of linear algebra,
 and traverse the diverse landscapes of mathematics.
 Allow nguyenpanda's **_owl_** to be your steadfast companion on your intellectual odyssey.
 
+## 🐦‍⬛ raven
+Enter the realm of the raven, where intelligence and innovation
+converge in a comprehensive library of data structures
+Inspired by the ingenuity of the raven, this package offers elegant data structures classes.
+
 ## 🦢 swan
 
 Indulge in the beauty of aesthetics and user interfaces with the elegant **swan** package. 
 Dive into the world of colors, front-end development, GUI, and more. 
 Transform your applications into visual masterpieces with **_swan_**.
-
-## 🐦‍⬛ raven
-Enter the realm of the raven, where intelligence and innovation
-converge in a comprehensive library of data structures
-Inspired by the ingenuity of the raven, this package offers elegant data structures classes.
 
 ## Installation
 
