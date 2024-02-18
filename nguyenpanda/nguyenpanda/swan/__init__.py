@@ -1,6 +1,7 @@
 """
 Swan package provides things related to beautiful, font-end, GUI,...
-    - ColorClass: a class to represent a color in RGB, HEX, HSL, and HSV format
+    - ColorClass: a class that contains color codes and methods to print colored text to the console.
+    - Color: an instance of ColorClass.
 """
 
 from .color import Color, ColorClass
