@@ -1,9 +1,14 @@
+"""
+This file is used to build the package and upload it to PyPI.
+"""
+
 import os
 
 from setuptools import setup, find_packages
 
 
 def read(file_name: str) -> str:
+    """Read README.md file."""
     return open(os.path.join(os.path.dirname(__file__), file_name)).read()
 
 

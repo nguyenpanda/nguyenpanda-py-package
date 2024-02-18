@@ -1,3 +1,7 @@
+"""
+This file is used to testing the swan module.
+"""
+
 import sys
 
 # noinspection PyUnresolvedReferences
