@@ -1,6 +1,6 @@
 """
 Swan package provides things related to beautiful, font-end, GUI,...
-    - ColorClass: a class that contains color codes and methods to print colored text to the console.
+    - ColorClass: class that contains color codes and methods to print colored text to the console.
     - Color: an instance of ColorClass.
 """
 
