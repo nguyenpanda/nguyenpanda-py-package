@@ -1,11 +1,11 @@
 # noinspection PyUnresolvedReferences
-from nguyenpanda.butterfly.RandomORG import RandomORG
+from nguyenpanda.nguyenpanda.butterfly.RandomORG import RandomORG
 
 # noinspection PyUnresolvedReferences
-from nguyenpanda.butterfly.RandomORG import *
+from nguyenpanda.nguyenpanda.butterfly.RandomORG import *
 import unittest
 
-API = input("Enter your api key from Random.org: ")
+API = 'Enter your api key from Random.org'
 
 
 # noinspection PyUnresolvedReferences
@@ -64,12 +64,12 @@ def test_random_org():
 
     print(f"Random.randint: {generator.randint(1, 3, 6)}")
     print(f"Random.randint_seq: {generator.randint_seq(3, 4, 3, 4)}")
-    print(f"Random.Usage: {generator.Usage()}")
-    print(f"Random.Uuid4: {generator.Uuid4(2)}")
-    print(f"Random.Blobs: {generator.Blobs(3, 16)}")
-    print(f'Random.Strings: {generator.Strings(3, 32, "nguyenpanda")}')
-    print(f"Random.Decimal: {generator.Decimal(3, 14)}")
-    print(f"Random.Gauss: {generator.Gauss(3, 0, 1, 14)}")
+    print(f"Random.Usage: {generator.usage()}")
+    print(f"Random.Uuid4: {generator.uuid4(2)}")
+    print(f"Random.Blobs: {generator.blobs(3, 16)}")
+    print(f'Random.Strings: {generator.strings(3, 32, "nguyenpanda")}')
+    print(f"Random.Decimal: {generator.decimal(3, 14)}")
+    print(f"Random.Gauss: {generator.gauss(3, 0, 1, 14)}")
 
 
 if __name__ == "__main__":
