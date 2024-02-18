@@ -25,7 +25,7 @@ from pydantic import BaseModel, Field, AfterValidator, field_validator, model_va
 from typing_extensions import Annotated, Literal, Union
 
 # @formatter:off
-UUID4_api_key       = Annotated[str, AfterValidator(lambda v: UUID(v).__str__())]
+UUID4_api_key       = Annotated[str, AfterValidator(lambda v: str(UUID(v)))]
 
 Float_1M_Range      = Annotated[float, Field(..., ge=-1_000_000, le=1_000_000)]
 
