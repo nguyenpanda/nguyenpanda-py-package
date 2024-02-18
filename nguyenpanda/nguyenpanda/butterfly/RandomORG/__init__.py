@@ -1,16 +1,23 @@
 """
 Module for interacting with the Random.org API.
 
-Although the Random.org API provides a Python client library called 'rdoclient' (https://github.com/RandomOrg/JSON-RPC-Python.git),
-I have decided to create my own client library for the API.
+Although the Random.org API provides a Python client library called 'rdoclient'
+    (https://github.com/RandomOrg/JSON-RPC-Python.git),
+    I have decided to create my own client library for the API.
 
-This project serves as an opportunity for me to practice object-oriented programming (OOP), utilize Pydantic for data validation, and interact with APIs.
+This project serves as an opportunity for me to practice
+    object-oriented programming (OOP),
+    utilize Pydantic for data validation, and interact with APIs.
 
-Please note that while this library may not be complete, I am committed to updating it regularly.
-If you encounter any bugs or issues, please don't hesitate to contact me via email.
+Please note that while this library may not be complete,
+    I am committed to updating it regularly.
+If you encounter any bugs or issues,
+    please don't hesitate to contact me via email.
 
-Additionally, this library can also serve as a learning resource for beginners who are just starting to learn about APIs and Pydantic.
-While it may not be perfect, we can exchange ideas and provide feedback via email, I can provide guidance and support to help you understand the code.
+Additionally, this library can also serve as a learning resource
+    for beginners who are just starting to learn about APIs and Pydantic.
+    While it may not be perfect, we can exchange ideas and provide feedback via email,
+    I can provide guidance and support to help you understand the code.
 """
 
 from .random_org import RandomORG
