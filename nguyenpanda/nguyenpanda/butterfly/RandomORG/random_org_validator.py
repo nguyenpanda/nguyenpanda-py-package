@@ -18,7 +18,6 @@ Type hints:
     - Format, Base
 """
 
-
 from enum import Enum
 from uuid import UUID
 

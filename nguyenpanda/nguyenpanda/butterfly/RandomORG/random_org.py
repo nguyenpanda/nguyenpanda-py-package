@@ -1,10 +1,17 @@
+"""
+This module contains the RandomORG class, which is used to interact with the Random.org API.
+
+Classe:
+    RandomORG: A class for interacting with the Random.org API.
+"""
+
 from typing import Any
 
 import requests
 
 from .random_org_validator import (
-    BaseRandomORG,
     EnumMethod,
+    BaseRandomORG,
     Uuid4Validator,
     BlobsValidator,
     StringsValidator,
@@ -22,6 +29,7 @@ from .random_org_validator import (
     IntSeq_max_min, Float_1M_Range,
 )
 
+# Constants for the Random.org API
 URL: str = "https://api.random.org/json-rpc/2/invoke"
 HEADERS: dict = {"Content-Type": "application/json"}
 BASE_DATA: dict = {"jsonrpc": "2.0", "id": 42}
@@ -199,9 +207,9 @@ class RandomORG:
         result = self._call_api_method(EnumMethod.Strings, params)
         return result if len(result) > 1 else result[0]
 
-    def Decimal(
-        self, _n: Int_range_1_10000, _decimal_places: Int_range_1_14
-    ) -> list[float] | float:
+    def Decimal(self,
+                _n: Int_range_1_10000,
+                _decimal_places: Int_range_1_14) -> list[float] | float:
         """Generate random decimal fractions.
 
         Args:
@@ -306,3 +314,4 @@ class RandomORG:
         ).get_params()
         result = self._call_api_method(EnumMethod.IntSeq, params)
         return result if len(result) > 1 else result[0]
+
