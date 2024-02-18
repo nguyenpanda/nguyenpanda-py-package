@@ -1,3 +1,8 @@
+"""
+Swan package provides things related to beautiful, font-end, GUI,...
+    - ColorClass: a class to represent a color in RGB, HEX, HSL, and HSV format
+"""
+
 from .color import Color, ColorClass
 
 __all__ = (
