@@ -20,7 +20,7 @@ Additionally, this library can also serve as a learning resource
     I can provide guidance and support to help you understand the code.
 """
 
-from .random_org import RandomORG
+from .random_org import RandomORG, ErrorResponse, HttpRequestError
 
 # @formatter:off
 from .random_org_validator import (
@@ -52,5 +52,8 @@ __all__ = [
     'BaseRandomORG',
     'RandomValidator', 'Uuid4Validator', 'BlobsValidator', 'StringsValidator',
     'GaussValidator', 'DecimalValidator', 'IntValidator', 'IntSeqValidator',
+    # Error
+    'ErrorResponse',
+    'HttpRequestError',
 ]
 # @formatter:on
