@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: nguyenpanda
-Version: 0.1.6
+Version: 0.1.8
 Summary: Welcome to the world of 'nguyenpanda', a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.
 Home-page: https://github.com/nguyenpanda
 Author: Tường Nguyên Hà
@@ -25,26 +25,41 @@ Requires-Dist: requests
 Requires-Dist: typing-extensions
 Requires-Dist: urllib3
 
-# nguyenpanda
+# 🐼nguyenpanda🐼
 
 [![PyPI version](https://badge.fury.io/py/nguyenpanda.svg)](https://badge.fury.io/py/nguyenpanda)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## `nguyenpanda` Overview
 
-Welcome to the world of **nguyenpanda**, a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.
+Welcome to the world of **nguyenpanda**, a Python library that brings you the essence of utility packages, 
+each named after animals, perfectly representing its unique domain.
 
 ## 🦋 butterfly
 
-Explore the randomness and chaos with the mysterious **butterfly** package. Dive into the world of uncertainty, probability, and statistics. Embrace the unexpected with nguyenpanda's butterfly.
+Embark on a journey through randomness and chaos with the enigmatic **_butterfly_** package.
+Delve into the realms of uncertainty, probability, and statistics.
+Embrace the unpredictable nature of nguyenpanda's **_butterfly_**.
+Remember, even the flutter of a **_butterfly's_** wings can cause significant changes in a complex system, 
+so seize the opportunity to explore its mysteries.
 
 ## 🦉 owl
 
-Uncover the secrets of mathematics with the wise **owl** package. Master calculus, conquer linear algebra, and navigate through mathematical landscapes. Let nguyenpanda's owl guide you on your intellectual journey.
+Illuminate the path to mathematical enlightenment with the wisdom of the **_owl_**.
+Ascend to mastery in calculus, conquer the realms of linear algebra,
+and traverse the diverse landscapes of mathematics.
+Allow nguyenpanda's **_owl_** to be your steadfast companion on your intellectual odyssey.
+
+## 🐦‍⬛ raven
+Enter the realm of the raven, where intelligence and innovation
+converge in a comprehensive library of data structures
+Inspired by the ingenuity of the raven, this package offers elegant data structures classes.
 
 ## 🦢 swan
 
-Indulge in the beauty of aesthetics and user interfaces with the elegant **swan** package. Dive into the world of colors, front-end development, GUI, and more. Transform your applications into visual masterpieces with swan.
+Indulge in the beauty of aesthetics and user interfaces with the elegant **swan** package. 
+Dive into the world of colors, front-end development, GUI, and more. 
+Transform your applications into visual masterpieces with **_swan_**.
 
 ## Installation
 
@@ -62,12 +77,25 @@ pip install nguyenpanda==<version>
 
 Unleash the power of nguyenpanda by delving into the documentation and perusing code examples within each package directory. Witness the harmonious convergence of butterfly, owl, and swan as they elevate your projects in distinct domains.
 
-## Contributions
+## 🤝 Contributions
 
 Become a part of the nguyenpanda community! Share your ideas, report bugs, or request features through GitHub issues. We welcome your contributions and enhancements.
 
-## License
+## 🪪 License
 
 nguyenpanda is released under the MIT License. Feel the freedom to explore, utilize, and contribute, respecting the terms outlined in the license.
 
+## ☎️ Contact
+
+**Hà Tường Nguyên (Mr.)**  
+**Computer Science**  
+<small>Office for International Study Programs | HCMC University of Technology</small>
+
+
+**Contact via:**  
+- **Gmail:** nguyen.hatuong0107@hcmut.edu.vn
+- **Gmail:** hatuongnguyen0107@gmail.com
+
+
 Happy coding with nguyenpanda! 🚀
+

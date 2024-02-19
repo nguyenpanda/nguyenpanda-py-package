@@ -9,13 +9,13 @@ from setuptools import setup, find_packages
 
 def read(file_name: str) -> str:
     """Read README.md file."""
-    return open(os.path.join(os.path.dirname(__file__), 'nguyenpanda/' + file_name)).read()
+    return open(os.path.join(os.path.dirname(__file__), file_name)).read()
 
 
 # noinspection PyInterpreter
 setup(
     name='nguyenpanda',
-    version='0.1.6',
+    version='0.1.8',
     author='Tường Nguyên Hà',
     author_email='hatuongnguyen0107@gmail.com',
     description='Welcome to the world of \'nguyenpanda\', a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.',

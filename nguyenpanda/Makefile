@@ -19,13 +19,13 @@ local:
 	@pip install -e .
 
 pypi:
-	@echo "\033[1;92Updata pip, build, twine\033[0m"
-	python3 -m pip install --upgrade pip
-	python3 -m pip install --upgrade build
-	python3 -m pip install --upgrade twine
-	@echo "\033[1;92Building distribution files\033[0m"
+	@echo "\033[1;92mUpgrading pip, build, twine\033[0m"
+	#python3 -m pip install --upgrade pip
+	#python3 -m pip install --upgrade build
+	#python3 -m pip install --upgrade twine
+	@echo "\033[1;92mBuilding distribution files\033[0m"
 	python3 -m build
-	@echo "\033[1;92Upload to PyPi\033[0m"
+	@echo "\033[1;92mUploading to PyPi\033[0m"
 	python3 -m twine upload --repository pypi dist/*
 
 pack:
