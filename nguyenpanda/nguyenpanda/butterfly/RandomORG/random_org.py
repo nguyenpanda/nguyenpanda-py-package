@@ -351,3 +351,4 @@ class RandomORG:
         ).get_params()
         result = self._call_api_method(EnumMethod.IntSeq, params)
         return result if len(result) > 1 else result[0]
+
