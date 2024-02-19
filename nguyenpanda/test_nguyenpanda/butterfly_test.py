@@ -1,15 +1,15 @@
-# noinspection PyUnresolvedReferences
-from nguyenpanda.nguyenpanda.butterfly.RandomORG import RandomORG
-
-# noinspection PyUnresolvedReferences
-from nguyenpanda.nguyenpanda.butterfly.RandomORG import *
 import unittest
 
-API = 'Enter your api key from Random.org'
+from pydantic import ValidationError
+
+from nguyenpanda.nguyenpanda.butterfly.RandomORG import *
+
+API = "1aaffe1a-32a9-4072-87e6-7086c5630637"  # Fake API
 
 
 # noinspection PyUnresolvedReferences
 class TestRandomORG(unittest.TestCase):
+
     def test_int_validator(self):
         validator = IntValidator(apiKey=API, n=100, min=10, max=20, base=10)
         self.assertEqual(validator.min, 10)
@@ -58,20 +58,29 @@ class TestRandomORG(unittest.TestCase):
         self.assertEqual(validator.n, 100)
         self.assertEqual(validator.decimalPlaces, 6)
 
+    def test_fake_api_key(self):
+        fake_api_key = "1aaffe1a-32a9-4072-87e6-7086c5630637"
+        generator = RandomORG(api_key=fake_api_key)
 
-def test_random_org():
-    generator = RandomORG(api_key=API)
+        with self.assertRaises(ErrorResponse):
+            generator.randint(1, 1, 6)
 
-    print(f"Random.randint: {generator.randint(1, 3, 6)}")
-    print(f"Random.randint_seq: {generator.randint_seq(3, 4, 3, 4)}")
-    print(f"Random.Usage: {generator.usage()}")
-    print(f"Random.Uuid4: {generator.uuid4(2)}")
-    print(f"Random.Blobs: {generator.blobs(3, 16)}")
-    print(f'Random.Strings: {generator.strings(3, 32, "nguyenpanda")}')
-    print(f"Random.Decimal: {generator.decimal(3, 14)}")
-    print(f"Random.Gauss: {generator.gauss(3, 0, 1, 14)}")
+    # def test_input_validator(self):
+    #     with self.assertRaises(ValidationError):
+    #         generator.randint_seq(3, 4, 3, 4)
+    #     with self.assertRaises(ValidationError):
+    #         generator.usage()
+    #     with self.assertRaises(ValidationError):
+    #         generator.uuid4(2)
+    #     with self.assertRaises(ValidationError):
+    #         generator.blobs(3, 16)
+    #     with self.assertRaises(ValidationError):
+    #         generator.strings(3, 32, "nguyenpanda")
+    #     with self.assertRaises(ValidationError):
+    #         generator.decimal(3, 14)
+    #     with self.assertRaises(ValidationError):
+    #         generator.gauss(3, 0, 1, 14)
 
 
 if __name__ == "__main__":
-    test_random_org()
     unittest.main()
