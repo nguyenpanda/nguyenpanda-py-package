@@ -88,6 +88,16 @@ class RandomORG:
 
     Additionally, this library can also serve as a learning resource for beginners
     who are just starting to learn about APIs and Pydantic.
+
+    Methods:
+        - usage: Get usage statistics for the Random.org API.
+        - uuid4: Generate UUIDs.
+        - blobs: Generate blobs of random binary data.
+        - strings: Generate random strings.
+        - decimal: Generate random decimal fractions.
+        - gauss: Generate random numbers following a Gaussian distribution.
+        - randint: Generate random integers within a specified range.
+        - randint_seq: Generate sequences of random integers.
     """
 
     def __init__(self, api_key: UUID4_api_key) -> None:
