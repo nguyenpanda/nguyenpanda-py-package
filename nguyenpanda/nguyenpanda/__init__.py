@@ -35,5 +35,6 @@ from .swan import *
 __all__ = (
     'butterfly',
     'owl',
+    'raven',
     'swan',
 )
