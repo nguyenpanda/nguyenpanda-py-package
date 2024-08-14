@@ -1,5 +1,0 @@
-numpy
-pydantic
-requests
-typing-extensions
-urllib3
