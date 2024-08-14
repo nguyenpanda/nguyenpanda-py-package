@@ -3,11 +3,12 @@ from pathlib import Path
 
 
 def create_alias(source_path, alias_name, alias_path: Path | str = Path.cwd()):
+    alias_path = (Path(alias_path) / alias_name).absolute()
+
     if alias_path.is_dir():
         print('\033[1;93mDirectory \"\033[1;92m{}\033[1;93m\" already exist!\033[0m'.format(alias_path))
         return alias_path
 
-    alias_path = (Path(alias_path) / alias_name).absolute()
     if os.name == 'nt':  # Windows NT
         command = 'mklink /D {} {}'.format(alias_path, source_path)
     elif os.name == 'posix':  # macOS-specific code
