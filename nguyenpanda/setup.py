@@ -15,7 +15,7 @@ def read(file_name: str) -> str:
 # noinspection PyInterpreter
 setup(
     name='nguyenpanda',
-    version='0.1.8',
+    version='0.1.8.1',
     author='Tường Nguyên Hà',
     author_email='hatuongnguyen0107@gmail.com',
     description='Welcome to the world of \'nguyenpanda\', a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.',
@@ -31,6 +31,7 @@ setup(
         'requests',
         'typing-extensions',
         'urllib3',
+        'pathlib'
     ],
     project_urls={
         'Source Code': 'https://github.com/nguyenpanda/PyPackages',

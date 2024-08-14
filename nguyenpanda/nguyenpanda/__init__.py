@@ -26,13 +26,15 @@ Welcome to the world of nguyenpanda,
     Inspired by the ingenuity of the raven, this package offers elegant data structures classes.
 """
 
-__version__ = '0.1.6'
+__version__ = '0.1.8.1'
 
+from .ant import *
 from .butterfly import *
 from .owl import *
 from .swan import *
 
 __all__ = (
+    'ant',
     'butterfly',
     'owl',
     'raven',
