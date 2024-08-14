@@ -6,7 +6,6 @@ import os
 
 from setuptools import setup, find_packages
 
-
 def read(file_name: str) -> str:
     """Read README.md file."""
     return open(os.path.join(os.path.dirname(__file__), file_name)).read()
@@ -15,7 +14,7 @@ def read(file_name: str) -> str:
 # noinspection PyInterpreter
 setup(
     name='nguyenpanda',
-    version='0.1.8.1',
+    version='0.1.8.2',
     author='Tường Nguyên Hà',
     author_email='hatuongnguyen0107@gmail.com',
     description='Welcome to the world of \'nguyenpanda\', a Python library that brings you the essence of utility packages, each named after animals, perfectly representing its unique domain.',
