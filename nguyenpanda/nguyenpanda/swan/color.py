@@ -1,19 +1,20 @@
 from sys import stdout
-from typing import Dict, Literal, IO
+from typing import Dict, Literal, IO, Iterable
 from abc import ABC, abstractmethod
 import random
 
 
 class BaseColor(ABC):
 
-    def __init__(self, __seed: int | None = None):
+    def __init__(self, __seed, is_foreground: bool = True):
         self.reset = '\033[0m'
-        self.__seed: int | None = __seed
+        self.__seed = __seed
+        self.is_foreground = is_foreground
 
     def set_seed(self):
         pass
 
-    def print(self, *values: object, color: str | None = None, sep: str | None = " ", end: str | None = "\n",
+    def print(self, *values: object, color: str | None = None, sep: str | None = ' ', end: str | None = '\n',
               file: IO[str] | None = None, flush: Literal[False, True] = False) -> None:
         """
         Prints the values to nguyenpanda stream, or to sys.stdout by default.
@@ -33,6 +34,9 @@ class BaseColor(ABC):
         print(*values, sep=sep, end=end, file=file, flush=flush)
         stdout.write(self.reset)
 
+    def __call__(self, color):
+        return self[color]
+
     @abstractmethod
     def __getitem__(self, color) -> str:
         pass
@@ -47,30 +51,35 @@ class FourBitColor(BaseColor):
     This class contains color codes and methods to print colored text to the console.
     """
 
-    _COLORS: Dict[str, str] = {
-        'r': '\033[1;91m',  # RED
-        'g': '\033[1;92m',  # GREEN
-        'y': '\033[1;93m',  # YELLOW
-        'b': '\033[1;94m',  # BLUE
-        'm': '\033[1;95m',  # MAGENTA
-        'c': '\033[1;96m',  # CYAN
+    _COLOR_KEYS: Dict[str, int] = {
+        ' ': 0,  # BLACK
+        'r': 1,  # RED
+        'g': 2,  # GREEN
+        'y': 3,  # YELLOW
+        'b': 4,  # BLUE
+        'm': 5,  # MAGENTA
+        'c': 6,  # CYAN
     }
 
-    def __init__(self, __seed: int | None = None):
+    def __init__(self, __seed: int | None = None, is_foreground: bool = True, is_bright: bool = True):
         """
         Initialize a new instance of ColorClass.
 
         :param int __seed: seed for random color. Default is None.
         :type __seed: int or None
         """
-        super().__init__(__seed)
-        self.keys = list(self._COLORS.keys())
+        super().__init__(__seed, is_foreground)
+        self.keys = list(self._COLOR_KEYS.keys())
+        if is_bright:
+            self.code = '\033[1;9{}m' if is_foreground else '\033[1;10{}m'
+        else:
+            self.code = '\033[1;3{}m' if is_foreground else '\033[1;4{}m'
 
-    def __getitem__(self, color: Literal['r', 'g', 'y', 'b', 'm', 'c'] | str | None) -> str:
+    def __getitem__(self, color: Literal[' ', 'r', 'g', 'y', 'b', 'm', 'c'] | str | int | None) -> str:
         """
-        Retrieve the ANSI code color (RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN) for a specified color key.
+        Retrieve the ANSI code color (BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN) for a specified color key.
 
-        :param color: A color key that must be one of ('r', 'g', 'y', 'b', 'm', 'c', 'p') or a string that starts
+        :param color: A color key that must be one of (' ', 'r', 'g', 'y', 'b', 'm', 'c', 'p') or a string that starts
         with one of these letters. The input can start with uppercase.
 
         :return: The ANSI escape code string corresponding to the specified color.
@@ -79,7 +88,9 @@ class FourBitColor(BaseColor):
         """
         try:
             if color:
-                return self._COLORS[color[0].lower()]
+                if isinstance(color, int):
+                    return self.code.format(color)
+                return self.code.format(self._COLOR_KEYS[color[0].lower()])
             else:
                 return self.random()
         except KeyError as e:
@@ -129,7 +140,7 @@ class EightBitColor(BaseColor):
         :param __seed: Optional seed for random color generation.
         :raises ValueError: If the color_range is not a tuple or list, or if it does not contain exactly two elements.
         """
-        super().__init__(__seed)
+        super().__init__(__seed, is_foreground)
         self.range = color_range
         self.code = '\033[38;5;{}m' if is_foreground else '\033[48;5;{}m'
 
@@ -192,10 +203,10 @@ class Two4BitColor(BaseColor):
         :param is_foreground: Determines if the color is for the foreground (True) or background (False).
         :param __seed: Optional seed for random color generation.
         """
-        super().__init__(__seed)
+        super().__init__(__seed, is_foreground)
         self.code = '\033[38;2;{};{};{}m' if is_foreground else '\033[48;2;{};{};{}m'
 
-    def __getitem__(self, rgb: str | list[int | str] | tuple[int | str]) -> str:
+    def __getitem__(self, rgb: int | str | Iterable[str] | Iterable[int] | Iterable[str | int]) -> str:
         """
         Retrieves the ANSI escape code for the given RGB color.
 
@@ -207,7 +218,9 @@ class Two4BitColor(BaseColor):
         :raises ValueError: If the input is invalid.
         """
         if rgb:
-            if isinstance(rgb, str) and len(rgb) == 6:
+            if isinstance(rgb, int):
+                rgb = (rgb, rgb, rgb)
+            elif isinstance(rgb, str) and len(rgb) == 6:
                 rgb = [int(rgb[i:i + 2], 16) for i in range(0, 6, 2)]
             elif len(rgb) == 3:
                 rgb = [int(c, 16) if isinstance(c, str) else c for c in rgb]
