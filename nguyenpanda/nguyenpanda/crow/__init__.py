@@ -6,10 +6,12 @@ and other common tasks that are essential in a typical ML/DL workflow.
 """
 
 from .jupyter_notebook import NoteBookUtils
+from .plotting import plot_train_test_loss_accuracy
 
 nb_utils: NoteBookUtils = NoteBookUtils()
 
 __all__ = [
     'NoteBookUtils',
     'nb_utils',
+    'plot_train_test_loss_accuracy',
 ]
