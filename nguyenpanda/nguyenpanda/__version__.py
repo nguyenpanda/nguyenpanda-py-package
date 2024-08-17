@@ -1,5 +1,5 @@
 __name__ = 'nguyenpanda'
-__version__ = '0.1.8.5'
+__version__ = '0.1.9'
 __author__ = 'Nguyen Tuong Ha'
 __email__ = 'hatuongnguyen0107@gmail.com'
 __maintainer__ = 'nguyenpanda'
