@@ -22,7 +22,7 @@ def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
         None: Displays the plot of loss and accuracy curves.
     """
     epochs = len(history['train_loss'])
-    epoch_range = list(range(1, + 1))
+    epoch_range = list(range(1, epochs + 1))
 
     plt.figure(figsize=kwargs.get('figsize', (14, 5)))
 
