@@ -8,7 +8,7 @@
 Welcome to the world of **nguyenpanda**, a Python library that brings you the essence of utility packages, 
 each named after animals, perfectly representing its unique domain.
 
-## 🦋 butterfly
+## 🦋 `butterfly`
 
 Embark on a journey through randomness and chaos with the enigmatic **_butterfly_** package.
 Delve into the realms of uncertainty, probability, and statistics.
@@ -16,19 +16,26 @@ Embrace the unpredictable nature of nguyenpanda's **_butterfly_**.
 Remember, even the flutter of a **_butterfly's_** wings can cause significant changes in a complex system, 
 so seize the opportunity to explore its mysteries.
 
-## 🦉 owl
+## 🐦‍⬛ `crow`
+
+**_Crow_** is a utility package designed to streamline the process of working
+on Machine Learning (ML) and Deep Learning (DL) projects within Jupyter notebooks.
+It provides a set of convenient functions to help manage datasets, directories,
+and other common tasks that are essential in a typical ML/DL workflow.
+
+## 🦉 `owl`
 
 Illuminate the path to mathematical enlightenment with the wisdom of the **_owl_**.
 Ascend to mastery in calculus, conquer the realms of linear algebra,
 and traverse the diverse landscapes of mathematics.
 Allow nguyenpanda's **_owl_** to be your steadfast companion on your intellectual odyssey.
 
-## 🐦‍⬛ raven
+## 🐦‍⬛ `raven`
 Enter the realm of the raven, where intelligence and innovation
 converge in a comprehensive library of data structures
 Inspired by the ingenuity of the raven, this package offers elegant data structures classes.
 
-## 🦢 swan
+## 🦢 `swan`
 
 Indulge in the beauty of aesthetics and user interfaces with the elegant **swan** package. 
 Dive into the world of colors, front-end development, GUI, and more. 
