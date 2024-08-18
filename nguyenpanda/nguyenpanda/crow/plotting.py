@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import random
 from pathlib import Path
 
+
 def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
     """
     Plots training and testing loss and accuracy over epochs.
@@ -12,47 +13,53 @@ def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
                         for both training and testing. The dictionary keys should be:
                         - 'train_loss': List of training loss values.
                         - 'test_loss': List of testing loss values.
+                        - 'eval_loss': List of evaluating loss values.
                         - 'train_acc': List of training accuracy values.
                         - 'test_acc': List of testing accuracy values.
+                        - 'eval_acc': List of evaluating accuracy values.
         **kwargs: Optional keyword arguments for customizing the plot appearance:
                   - 'figsize' (tuple): Size of the figure.
                   - 'titlesize' (int): Font size of the plot titles.
                   - 'labelsize' (int): Font size of the axis labels.
+                  - 'facecolor' (str): Background color of the plot area.
                   - 'figpath' (PathLike): Image saving path (default None)
 
     Returns:
         None: Displays the plot of loss and accuracy curves.
     """
-    epochs = len(history['train_loss'])
-    epoch_range = list(range(1, epochs + 1))
 
     plt.figure(figsize=kwargs.get('figsize', (14, 5)))
+    plot_config = [
+        # (suffix, title, keys)
+        ('loss', 'Loss', ['train_loss', 'test_loss', 'eval_loss']),
+        ('acc', 'Accuracy', ['train_acc', 'test_acc', 'eval_acc']),
+    ]
 
-    plt.subplot(1, 2, 1)
-    plt.plot(epoch_range, history['train_loss'], label='Train Loss', color='blue', linestyle='--', marker='o')
-    plt.plot(epoch_range, history['test_loss'], label='Test Loss', color='red', linestyle='--', marker='x')
-    plt.title('Loss', fontsize=kwargs.get('titlesize', 16))
-    plt.xlabel('Epoch', fontsize=kwargs.get('lablesize', 14))
-    plt.ylabel('Loss', fontsize=kwargs.get('lablesize', 14))
-    plt.legend()
-    plt.xlim(1 - 0.1, epochs + 0.1)
-    plt.gca().xaxis.set_major_locator(plt.MaxNLocator(integer=True))
-    plt.gca().set_facecolor(kwargs.get('facecolor', '#f0f0ff'))
+    for i, (suffix, title, keys) in enumerate(plot_config, 1):
+        colors = ['blue', 'red', 'green']
+        markers = ['o', 'x', 'o']
 
-    plt.subplot(1, 2, 2)
-    plt.plot(epoch_range, history['train_acc'], label='Train Accuracy', color='blue', linestyle='--', marker='o')
-    plt.plot(epoch_range, history['test_acc'], label='Test Accuracy', color='red', linestyle='--', marker='x')
-    plt.title('Accuracy', fontsize=kwargs.get('titlesize', 16))
-    plt.xlabel('Epoch', fontsize=kwargs.get('lablesize', 14))
-    plt.ylabel('Accuracy', fontsize=kwargs.get('lablesize', 14))
-    plt.legend()
-    plt.xlim(1 - 0.1, epochs + 0.1)
-    plt.gca().xaxis.set_major_locator(plt.MaxNLocator(integer=True))
-    plt.gca().set_facecolor(kwargs.get('facecolor', '#f0f0ff'))
+        for key, color, marker in zip(keys, colors, markers):
+            if key in history:
+                plt.subplot(1, len(plot_config), i)
+                epochs = len(history[key])
+                epoch_range = range(1, epochs + 1)
+                plt.plot(epoch_range, history[key], label=key.replace('_', ' ').title(), color=color, linestyle='--',
+                         marker=marker)
+
+                plt.title(title, fontsize=kwargs.get('titlesize', 16))
+                plt.xlabel('Epoch', fontsize=kwargs.get('labelsize', 14))
+                plt.ylabel(title, fontsize=kwargs.get('labelsize', 14))
+                plt.legend()
+                plt.xlim(0.9, epochs + 0.1)
+                plt.gca().xaxis.set_major_locator(plt.MaxNLocator(integer=True))
+                plt.gca().set_facecolor(kwargs.get('facecolor', '#f0f0ff'))
 
     plt.tight_layout()
+    figpath = kwargs.get('figpath', None)
+    if figpath:
+        plt.savefig(figpath)
     plt.show()
-    plt.savefig(kwargs.get('figpath', None))
 
 
 def plot_random_transformed_image(dataset, n_row: int = 6, n_col: int = 3, **kwargs):
@@ -93,5 +100,7 @@ def plot_random_transformed_image(dataset, n_row: int = 6, n_col: int = 3, **kwa
             axs[r, c + 1].axis(False)
             axs[r, c + 1].grid('off')
 
+    figpath = kwargs.get('figpath', None)
+    if figpath:
+        plt.savefig(figpath)
     plt.show()
-    plt.savefig(kwargs.get('figpath', None))

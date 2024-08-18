@@ -15,7 +15,8 @@
     'c8', 'c8b',
     'c24', 'c24b',
     'green',
-    'red'
+    'red',
+    'yellow'
 """
 
 from .color import BaseColor, FourBitColor, EightBitColor, Two4BitColor
@@ -94,6 +95,15 @@ def red(text) -> str:
     return '\033[1;91m' + str(text) + '\033[0m'
 
 
+def yellow(text) -> str:
+    """
+    Wrap the text with yellow color.
+    Args:
+        text: input text
+    Returns: red text
+    """
+    return '\033[1;93m' + str(text) + '\033[0m'
+
 __all__ = (
     'BaseColor',
     'FourBitColor',
@@ -104,5 +114,6 @@ __all__ = (
     'c24', 'c24b',
     'set_color_bit',
     'green',
-    'red'
+    'red',
+    'yellow',
 )

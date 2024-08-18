@@ -9,9 +9,10 @@ from .jupyter_notebook import NoteBookUtils
 from .plotting import plot_train_test_loss_accuracy
 
 nb_utils: NoteBookUtils = NoteBookUtils()
+nbu: NoteBookUtils = nb_utils
 
 __all__ = [
     'NoteBookUtils',
-    'nb_utils',
+    'nb_utils', 'nbu',
     'plot_train_test_loss_accuracy',
 ]
