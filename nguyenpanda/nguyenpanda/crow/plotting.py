@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
-import random
 
+import random
+from pathlib import Path
 
 def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
     """
@@ -17,6 +18,7 @@ def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
                   - 'figsize' (tuple): Size of the figure.
                   - 'titlesize' (int): Font size of the plot titles.
                   - 'labelsize' (int): Font size of the axis labels.
+                  - 'figpath' (PathLike): Image saving path (default None)
 
     Returns:
         None: Displays the plot of loss and accuracy curves.
@@ -50,6 +52,7 @@ def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
 
     plt.tight_layout()
     plt.show()
+    plt.savefig(kwargs.get('figpath', None))
 
 
 def plot_random_transformed_image(dataset, n_row: int = 6, n_col: int = 3, **kwargs):
@@ -65,6 +68,7 @@ def plot_random_transformed_image(dataset, n_row: int = 6, n_col: int = 3, **kwa
                   - 'figsize' (tuple): Size of the figure.
                   - 'supsize' (int): Font size of the subplot title.
                   - 'y' (float): Vertical alignment of the subplot title.
+                  - 'figpath' (PathLike): Image saving path (default None)
 
     Returns:
         None: Displays a plot of original and transformed images.
@@ -90,3 +94,4 @@ def plot_random_transformed_image(dataset, n_row: int = 6, n_col: int = 3, **kwa
             axs[r, c + 1].grid('off')
 
     plt.show()
+    plt.savefig(kwargs.get('figpath', None))
