@@ -35,7 +35,7 @@ def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
     plt.legend()
     plt.xlim(1 - 0.1, epochs + 0.1)
     plt.gca().xaxis.set_major_locator(plt.MaxNLocator(integer=True))
-    plt.gca().set_facecolor(kwargs.get('facecolor', 'f0f0ff'))
+    plt.gca().set_facecolor(kwargs.get('facecolor', '#f0f0ff'))
 
     plt.subplot(1, 2, 2)
     plt.plot(epoch_range, history['train_acc'], label='Train Accuracy', color='blue', linestyle='--', marker='o')
@@ -46,7 +46,7 @@ def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
     plt.legend()
     plt.xlim(1 - 0.1, epochs + 0.1)
     plt.gca().xaxis.set_major_locator(plt.MaxNLocator(integer=True))
-    plt.gca().set_facecolor(kwargs.get('facecolor', 'f0f0ff'))
+    plt.gca().set_facecolor(kwargs.get('facecolor', '#f0f0ff'))
 
     plt.tight_layout()
     plt.show()
