@@ -1,32 +1,34 @@
-from pathlib import Path
-
 import os
 import sys
+from pathlib import Path
+from typing import Union
 
 
 class NoteBookUtils:
+    """
+    A utility class for common tasks in Jupyter notebooks, such as creating symbolic links (aliases)
+    and detecting the Google Colab environment.
+    """
 
     @classmethod
     def create_alias(cls, source_path: str | Path, alias_name: str, alias_path: str | Path = Path.cwd(),
                      verbose: bool = True) -> Path:
         """
-        Creates an alias (symbolic link) to a specified directory. This is useful when working with large datasets that
-        are stored on a different part of the computer and are not directly accessible from your working environment
-        (e.g., Jupyter notebook, Google Colab).
+        Creates a symbolic link (alias) to the specified source directory.
 
-        The function creates a symbolic link with the provided alias name in the specified directory. If the alias
-        directory already exists, it returns the path without making any changes. The function supports Windows, macOS,
-        and environments like Google Colab.
+        Args:
+            source_path (Union[str, Path]): The path to the directory to be linked.
+            alias_name (str): The name of the alias to be created.
+            alias_path (Union[str, Path], optional): The directory where the alias should be created. Defaults to the current working directory.
+            verbose (bool, optional): Whether to print status messages. Defaults to True.
 
-        :param source_path: The path to the directory where the actual dataset is stored. This can be a string or a Path object.
-        :param alias_name: The name to be used for the alias (symbolic link).
-        :param alias_path: The directory where the alias should be created. Defaults to the current working directory.
-                           This can be a string or a Path object.
-        :param verbose: Whether to print status messages. Defaults to True.
-        :return: The absolute path to the created alias directory.
-        :raises RuntimeError: If the command to create the alias fails.
-        :raises NotImplementedError: If the operating system is not supported.
-        :raises PermissionError: If the operation requires elevated permissions (common on Windows in Jupyter notebooks).
+        Returns:
+            Path: The absolute path to the created alias directory.
+
+        Raises:
+            RuntimeError: If the command to create the alias fails.
+            NotImplementedError: If the operating system is not supported.
+            PermissionError: If the operation requires elevated permissions (common on Windows in Jupyter notebooks).
         """
         alias_path = (Path(alias_path) / alias_name).absolute()
         source_path = Path(source_path).absolute()
@@ -49,12 +51,13 @@ class NoteBookUtils:
         try:
             exit_status = os.system(command)
             if exit_status != 0:
-                raise RuntimeError(f"Failed to create alias. Command exited with status {exit_status}")
+                raise RuntimeError(f'Failed to create alias. Command exited with status {exit_status}')
         except PermissionError as e:
             if os.name == 'nt' and 'Jupyter' in sys.modules:
                 raise PermissionError(
-                    "Creating symbolic links requires elevated permissions on Windows when running in a Jupyter notebook. "
-                    "Please run your notebook as Administrator.") from e
+                    'Creating symbolic links requires elevated permissions '
+                    'on Windows when running in a Jupyter notebook. '
+                    'Please run your notebook as Administrator.') from e
             else:
                 raise
 
@@ -69,3 +72,7 @@ class NoteBookUtils:
             bool: True if the code is running on Google Colab, otherwise False.
         """
         return os.getenv("COLAB_RELEASE_TAG") is not None
+
+
+nb_utils: NoteBookUtils = NoteBookUtils()
+nbu: NoteBookUtils = nb_utils
