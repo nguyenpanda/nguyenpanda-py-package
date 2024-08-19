@@ -25,6 +25,13 @@ pypi:
 	@echo "\033[1;92mUploading to PyPi\033[0m"
 	python3 -m twine upload --repository pypi dist/*
 
+test_pypi:
+	@#echo "\033[1;92mUpgrading pip, build, twine\033[0m"
+	@echo "\033[1;92mBuilding distribution files\033[0m"
+	python3 setup.py bdist_wheel sdist
+	@echo "\033[1;92mUploading to Test PyPi\033[0m"
+	python3 -m twine upload --repository testpypi dist/*
+
 pack:
 	pip freeze --local
 
