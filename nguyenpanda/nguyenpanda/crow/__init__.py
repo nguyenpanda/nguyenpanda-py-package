@@ -5,14 +5,16 @@ It provides a set of convenient functions to help manage datasets, directories,
 and other common tasks that are essential in a typical ML/DL workflow.
 """
 
-from .jupyter_notebook import NoteBookUtils
+from .dataset import Dataset
+from .exception import InvalidKaggleAPI, KaggleAuthenticationFailed
+from .google_colab import GoogleColabUtils, gc_utils, gcu
+from .jupyter_notebook import NoteBookUtils, nb_utils, nbu
 from .plotting import plot_train_test_loss_accuracy
 
-nb_utils: NoteBookUtils = NoteBookUtils()
-nbu: NoteBookUtils = nb_utils
-
 __all__ = [
-    'NoteBookUtils',
-    'nb_utils', 'nbu',
+    'Dataset',
+    'InvalidKaggleAPI', 'KaggleAuthenticationFailed',
+    'GoogleColabUtils', 'gc_utils', 'gcu',
+    'NoteBookUtils', 'nb_utils', 'nbu',
     'plot_train_test_loss_accuracy',
 ]
