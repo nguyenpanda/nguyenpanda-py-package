@@ -15,7 +15,7 @@ class InvalidKaggleAPI(Exception):
             api (str): The invalid Kaggle API command.
         """
         self.message = (
-            'KAGGLE_API_COMMAND must be replaced by an actual API command.\n'
+            '`api` must be replaced by an actual API command.\n'
             'Expected pattern: `kaggle datasets download -d <username>/<dataset_name>`.\n'
             f'Provided command: {api}\n'
             'For more information, visit: https://www.kaggle.com/docs/api#interacting-with-datasets'
