@@ -1,5 +1,6 @@
 import os
 import subprocess
+import zipfile
 from pathlib import Path
 from typing import Optional
 
@@ -8,10 +9,15 @@ from typing_extensions import Self
 from .exception import InvalidKaggleAPI, KaggleAuthenticationFailed
 from .google_colab import gcu
 from .jupyter_notebook import nbu
-from ..swan import green, yellow
+from ..swan import green, yellow, red
 
 if nbu.is_colab():
     from google.colab import files
+
+try:
+    import kaggle
+except ModuleNotFoundError as e:
+    print(red('Pleas install kaggle package by this command "pip install kaggle"'))
 
 
 class Dataset:
@@ -90,17 +96,43 @@ class Dataset:
 
         if verbose:
             print(green('Unzipping Kaggle Dataset...'))
-        os.system('unzip {}.zip -d "{}"'.format(api.split('/')[-1], self.dataset_source_dir.as_posix()))
+        with zipfile.ZipFile(api.split('/')[-1] + '.zip', 'r') as zip_ref:
+            zip_ref.extractall(self.dataset_source_dir.as_posix())
 
         return self
 
     def alias(self, source: Optional[str | Path] = None, destination: str | Path = Path.cwd(), verbose: bool = True) -> Path:
+        """
+        Creates a symbolic link (alias) to the dataset directory.
+
+        If the `source` is not provided, the method will use `self.dataset_source_dir`.
+        If both `source` and `self.dataset_source_dir` are None, a ValueError is raised.
+
+        Args:
+            source (Optional[Union[str, Path]], optional): The source directory to create an alias for.
+                                                           If None, `self.dataset_source_dir` is used.
+                                                           Defaults to None.
+            destination (Union[str, Path], optional): The destination where the alias should be created.
+                                                      Defaults to the current working directory.
+            verbose (bool, optional): Whether to print status messages. Defaults to True.
+
+        Returns:
+            Path: The path to the created alias.
+
+        Raises:
+            ValueError: If both `source` and `self.dataset_source_dir` are None.
+            PermissionError: If creating the alias fails due to permissions.
+            RuntimeError: If creating the alias fails for other reasons.
+        """
+        if source is None and self.dataset_source_dir is None:
+            raise ValueError('There is no dataset directory to point to')
+
         if source is None:
             source = self.dataset_source_dir
-        if isinstance(destination, str):
-            destination = Path(destination)
-            if not destination.is_dir():
-                destination.mkdir(parents=True)
+
+        destination = Path(destination) if isinstance(destination, str) else destination
+        if not destination.is_dir():
+            destination.mkdir(parents=True)
 
         return nbu.create_alias(source_path=source, alias_name=self.name or Path(source).name,
                                 alias_path=destination, verbose=verbose)
