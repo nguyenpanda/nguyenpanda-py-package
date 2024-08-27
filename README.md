@@ -4,8 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <picture>
-  <source srcset="logo/nguyenpanda-dark.svg" media="(prefers-color-scheme: dark)">
-  <img src="logo/nguyenpanda-light.svg" alt="nguyenpanda">
+  <source srcset="logo/nguyenpanda-light.svg" media="(prefers-color-scheme: dark)">
+  <img src="logo/nguyenpanda-dark.svg" alt="nguyenpanda">
 </picture>
 
 ## `nguyenpanda` Overview
