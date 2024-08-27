@@ -5,9 +5,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head><title>nguyenpanda logo</title></head>
     <body>
-        <p><img style="background-color: white" alt="nguyenpanda logo" src="logo/nguyenpanda.svg" /></p>
+        <p><img alt="nguyenpanda logo" src="logo/canva.svg" /></p>
     </body>
 </html>
 
