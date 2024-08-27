@@ -1,14 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611 120">
     <defs>
         <style>
-            .cls-1, .cls-3 { fill: #231f20; }
-            .cls-2 { fill: none; stroke: #231f20; stroke-miterlimit: 10; }
-            .cls-3 { font-size: 60px; font-family: JetBrainsMono-ExtraBold, JetBrains Mono; font-weight: 800; letter-spacing:
-            -0.03em; }
+            .cls-1,.cls-3{
+                fill: #000;
+            }
+            .cls-2{
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+            }
+            .cls-3{
+                font-size: 60px;
+                font-family: JetBrainsMono-ExtraBold, JetBrains Mono;
+                font-weight: 800;
+                letter-spacing: -0.03em;
+            }
 
             @media (prefers-color-scheme: dark) {
-            .cls-1, .cls-3 { fill: white; } /* Change color in dark mode */
-            .cls-2 { stroke: white; }
+                .cls-1, .cls-3 {
+                    fill: #ffffff;
+                }
+                .cls-2 {
+                    stroke: #ffffff;
+                }
             }
         </style>
     </defs>
