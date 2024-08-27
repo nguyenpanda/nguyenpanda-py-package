@@ -3,7 +3,10 @@
 [![PyPI version](https://badge.fury.io/py/nguyenpanda.svg)](https://badge.fury.io/py/nguyenpanda)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![nguyenpanda logo](logo/nguyenpanda.svg)
+<picture>
+  <source srcset="logo/nguyenpanda-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="logo/nguyenpanda-light.svg" alt="nguyenpanda">
+</picture>
 
 ## `nguyenpanda` Overview
 
