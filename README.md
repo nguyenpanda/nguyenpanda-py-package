@@ -5,25 +5,25 @@
 
 <div align="center">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611 120">
-    <defs>
-        <style>
-            .cls-1, .cls-3 {
-                fill: currentColor;
-            }
-            .cls-2 {
-                fill: none;
-                stroke: currentColor;
-                stroke-miterlimit: 10;
-            }
-            .cls-3 {
-                font-size: 60px;
-                font-family: JetBrainsMono-ExtraBold, JetBrains Mono, serif;
-                font-weight: 800;
-                letter-spacing: -0.03em;
-            }
-        </style>
-    </defs>
-    <g id="Layer_4" data-name="Layer 4">
+        <defs>
+            <style>
+                .cls-1, .cls-3 {
+                    fill: currentColor;
+                }
+                .cls-2 {
+                    fill: none;
+                    stroke: currentColor;
+                    stroke-miterlimit: 10;
+                }
+                .cls-3 {
+                    font-size: 60px;
+                    font-family: JetBrainsMono-ExtraBold, JetBrains Mono, serif;
+                    font-weight: 800;
+                    letter-spacing: -0.03em;
+                }
+            </style>
+        </defs>
+        <g id="Layer_4" data-name="Layer 4">
         <path class="cls-1"
               d="M111.09,51.81c1.65.24,2,1,1.13,2.43a15.69,15.69,0,0,1-1,1.41.85.85,0,0,1-1.46,0,16.88,16.88,0,0,1-1.45-1.83,1.21,1.21,0,0,1,.85-1.94A15.55,15.55,0,0,1,111.09,51.81Z"/>
         <path class="cls-1"
@@ -47,7 +47,7 @@
         <path class="cls-2" d="M115.21,55.81a6.32,6.32,0,0,1-2.47.74,2.28,2.28,0,0,1-1-.08,2.51,2.51,0,0,1-.61-.36l-.65-.5"/>
         <text class="cls-3" transform="translate(153.65 76.65)">nguyenpanda</text>
     </g>
-</svg>
+    </svg>
 </div>
 
 ## `nguyenpanda` Overview
