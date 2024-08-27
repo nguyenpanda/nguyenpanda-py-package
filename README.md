@@ -3,23 +3,11 @@
 [![PyPI version](https://badge.fury.io/py/nguyenpanda.svg)](https://badge.fury.io/py/nguyenpanda)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-<style>
-    img {
-        background-color: #FFFFFF;
-    }
-</style>
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>
-            nguyenpanda logo
-        </title>
-    </head>
+    <head><title>nguyenpanda logo</title></head>
     <body>
-        <p>
-            <img alt="nguyenpanda logo" background-color="#FFFFFF" src="logo/nguyenpanda.svg" />
-        </p>
+        <p><img style="background-color: white" alt="nguyenpanda logo" src="logo/nguyenpanda.svg" /></p>
     </body>
 </html>
 
