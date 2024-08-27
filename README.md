@@ -3,8 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/nguyenpanda.svg)](https://badge.fury.io/py/nguyenpanda)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Alt text](logo/nguyenpanda-02.svg)
-![Alt text](logo/nguyenpanda-04.svg)
+![Alt text](logo/nguyenpanda.svg)
 
 ## `nguyenpanda` Overview
 
