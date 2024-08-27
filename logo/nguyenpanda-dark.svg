@@ -1,20 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611 120">
     <defs>
         <style>
-            .cls-1, .cls-3 {
-                fill: currentColor;
-            }
-            .cls-2 {
-                fill: none;
-                stroke: currentColor;
-                stroke-miterlimit: 10;
-            }
-            .cls-3 {
-                font-size: 60px;
-                font-family: JetBrainsMono-ExtraBold, JetBrains Mono;
-                font-weight: 800;
-                letter-spacing: -0.03em;
-            }
+            .cls-1,.cls-3{fill:#000000;}.cls-2{fill:none;stroke:#000000;stroke-miterlimit:10;}.cls-3{font-size:60px;font-family:JetBrainsMono-ExtraBold,
+            JetBrains Mono;font-weight:800;letter-spacing:-0.03em;}
         </style>
     </defs>
     <g id="Layer_4" data-name="Layer 4">
