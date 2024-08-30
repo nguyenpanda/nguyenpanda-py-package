@@ -3,6 +3,13 @@
 [![PyPI version](https://badge.fury.io/py/nguyenpanda.svg)](https://badge.fury.io/py/nguyenpanda)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <p><img alt="nguyenpanda logo" src="/logo/nguyenpanda.svg" /></p>
+    </body>
+</html>
+
 ## `nguyenpanda` Overview
 
 Welcome to the world of **nguyenpanda**, a Python library that brings you the essence of utility packages, 
