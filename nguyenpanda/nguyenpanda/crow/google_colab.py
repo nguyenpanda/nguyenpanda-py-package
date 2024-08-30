@@ -6,7 +6,7 @@ from ..swan import yellow
 
 # Import Google Colab-specific modules if running in Colab
 if nbu.is_colab():
-    from google.colab import output, drive
+    from google.colab import output, drive, errors
 
 
 class GoogleColabUtils:
@@ -16,7 +16,7 @@ class GoogleColabUtils:
     """
 
     @classmethod
-    def connect_to_google_drive(cls, drive_path: str = '/content/drive') -> Optional[Path]:
+    def mount_google_drive(cls, drive_path: str = '/content/drive') -> Optional[Path]:
         """
         Mounts Google Drive in Google Colab.
 
@@ -47,7 +47,10 @@ class GoogleColabUtils:
         """
         if not nbu.is_colab():
             return None
-        output.eval_js(f'new Audio("{sound}").play()')
+        try:
+            output.eval_js(f'new Audio("{sound}").play()')
+        except errors.Error:
+            pass
 
 
 gc_utils: GoogleColabUtils = GoogleColabUtils()
