@@ -17,6 +17,19 @@
     'green',
     'red',
     'yellow'
+
+    Examples
+    ```
+    from nguyenpanda.swan import color, c8, c24
+
+    print(color['green'] + 'Hello! World' + color.reset)
+
+    print(c8[79] + 'nguyenpanda' + c8.reset)
+
+    print(c24['ff00ff'] + 'nguyenpanda' + c24.reset)
+    print(c24['ff', 0, 'ff'] + 'nguyenpanda' + c24.reset)
+    print(c24[0, 255, 200] + 'nguyenpanda' + c24.reset)
+    ```
 """
 
 from .color import BaseColor, FourBitColor, EightBitColor, Two4BitColor
@@ -74,6 +87,7 @@ c8b: EightBitColor = EightBitColor(is_foreground=False)  # 8-bit color (backgrou
 c24: Two4BitColor = Two4BitColor()  # 24-bit color (foreground)
 c24b: Two4BitColor = Two4BitColor(is_foreground=False)  # 24-bit color (foreground)
 
+RESET = reset = '\033[0m'
 
 def green(text) -> str:
     """
@@ -104,6 +118,16 @@ def yellow(text) -> str:
     """
     return '\033[1;93m' + str(text) + '\033[0m'
 
+
+def blue(text) -> str:
+    """
+    Wrap the text with blue color.
+    Args:
+        text: input text
+    Returns: red text
+    """
+    return '\033[1;94m' + str(text) + '\033[0m'
+
 __all__ = (
     'BaseColor',
     'FourBitColor',
@@ -113,7 +137,6 @@ __all__ = (
     'c8', 'c8b',
     'c24', 'c24b',
     'set_color_bit',
-    'green',
-    'red',
-    'yellow',
+    'RESET', 'reset',
+    'green', 'red', 'yellow', 'blue'
 )
