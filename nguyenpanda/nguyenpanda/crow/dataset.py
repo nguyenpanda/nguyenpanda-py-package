@@ -1,6 +1,7 @@
 import os
 import subprocess
 import zipfile
+from collections import deque
 from pathlib import Path
 from typing import Optional
 
@@ -17,7 +18,9 @@ if nbu.is_colab():
 try:
     import kaggle
 except ModuleNotFoundError as e:
-    print(red('Pleas install kaggle package by this command "pip install kaggle"'))
+    print(red('Please install kaggle package by this command "pip install kaggle"'))
+except OSError as e:
+    print(yellow(e))
 
 
 class Dataset:
@@ -36,6 +39,7 @@ class Dataset:
         self.name = name
         self.in_colab: bool = nbu.is_colab()
         self.dataset_source_dir: Optional[Path] = None
+        self.alias_path: Optional[Path] = None
 
     def __str__(self) -> str:
         """
@@ -101,12 +105,13 @@ class Dataset:
 
         return self
 
-    def alias(self, source: Optional[str | Path] = None, destination: str | Path = Path.cwd(), verbose: bool = True) -> Path:
+    def alias(self, source: Optional[str | Path] = None, destination: str | Path = Path.cwd(),
+              exist_ok: bool = False, verbose: bool = True) -> Self:
         """
         Creates a symbolic link (alias) to the dataset directory.
 
         If the `source` is not provided, the method will use `self.dataset_source_dir`.
-        If both `source` and `self.dataset_source_dir` are None, a ValueError is raised.
+        If both `source` and `self.dataset_source_dir` are None, a ValueEror is raised.
 
         Args:
             source (Optional[Union[str, Path]], optional): The source directory to create an alias for.
@@ -114,6 +119,7 @@ class Dataset:
                                                            Defaults to None.
             destination (Union[str, Path], optional): The destination where the alias should be created.
                                                       Defaults to the current working directory.
+            exist_ok (bool): Allow overwriting alias if True.
             verbose (bool, optional): Whether to print status messages. Defaults to True.
 
         Returns:
@@ -127,6 +133,8 @@ class Dataset:
         if source is None and self.dataset_source_dir is None:
             raise ValueError('There is no dataset directory to point to')
 
+        if self.dataset_source_dir is None:
+            self.dataset_source_dir = source
         if source is None:
             source = self.dataset_source_dir
 
@@ -134,5 +142,59 @@ class Dataset:
         if not destination.is_dir():
             destination.mkdir(parents=True)
 
-        return nbu.create_alias(source_path=source, alias_name=self.name or Path(source).name,
-                                alias_path=destination, verbose=verbose)
+        self.alias_path = nbu.create_alias(source_path=source,
+                                           alias_name=self.name or Path(source).name,
+                                           alias_path=destination,
+                                           exist_ok=exist_ok, verbose=verbose)
+
+        return self
+
+    @staticmethod
+    def bfs_find(target: str = 'datasets', search_path: Path = None,
+                 strict: bool = True, verbose: bool = True) -> Optional[Path]:
+        """
+        Performs a breadth-first search (BFS) to locate a directory by name.
+
+        Args:
+            target (str, optional): The directory name to search for. Defaults to 'datasets'.
+            search_path (Path, optional): The root directory where the search begins.
+                                          If running in Google Colab, defaults to the current working directory.
+                                          If not specified, default to the user's home directory.
+            strict (bool, optional): If True, the search is case-sensitive and looks for an exact match.
+                                     If False, the search is case-insensitive and allows partial matches. Defaults to True.
+            verbose (bool, optional): If True, print the search progress. Defaults to True.
+
+        Returns:
+            Optional[Path]: The path to the found directory if it exists, or None if not found.
+        """
+        ignore = {'Library', 'Applications', 'bin', 'Documents', 'Movies', 'Music', 'Pictures',
+                  'venv', 'env', 'lib', 'build', 'cmake-build-debug', 'numpy'}
+        exclude_extensions = {'.photoslibrary', '.ignore', '__', 'env'}
+        exclude_prefix = {'.', '__', 'env'}
+
+        def is_valid_dir(p: Path):
+            return (p.is_dir() and
+                    p.stem not in ignore and
+                    not any(p.name.endswith(ext) for ext in exclude_extensions) and
+                    not any(p.name.startswith(ext) for ext in exclude_prefix))
+
+        if search_path is None:
+            search_path = Path.cwd() if nbu.is_colab() else Path.home()
+
+        queue = deque([search_path])
+        target = target.lower() if not strict else target
+        total_check = 0
+
+        while queue:
+            current_dir = queue.popleft()
+            for path in filter(is_valid_dir, current_dir.glob('[!.*]*')):
+                if (strict and path.stem == target) or (not strict and target in path.stem.lower()):
+                    return path
+                queue.append(path)
+                total_check += 1
+                if verbose and total_check % 300 == 0:
+                    print(f'Total checked: {total_check} | {path}', end='\n')
+
+        if verbose:
+            print(red('\nDirectory not found.'))
+        return None
