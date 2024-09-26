@@ -37,10 +37,10 @@ Int_range_1_32      = Annotated[int, Field(..., ge=1, le=32)]
 Int_range_1_14      = Annotated[int, Field(..., ge=1, le=14)]
 Int_range_2_14      = Annotated[int, Field(..., ge=2, le=14)]
 
-list_tuple          = Annotated[list[Int_range_1B] | tuple[Int_range_1B], Field(..., max_items=1_000)]
+list_tuple          = Annotated[Union[list[Int_range_1B], tuple[Int_range_1B]], Field(..., max_items=1_000)]
 IntSeq_max_min      = Annotated[Union[Int_range_1B, list_tuple], Field(..., union_mode='left_to_right')]
 
-Length_list_tuple   = Annotated[list[Int_range_1_10000] | tuple[Int_range_1_10000], Field(..., max_items=1_000)]
+Length_list_tuple   = Annotated[Union[list[Int_range_1_10000], tuple[Int_range_1_10000]], Field(..., max_items=1_000)]
 Length              = Annotated[Union[Int_range_1_10000, Length_list_tuple], Field(..., union_mode='left_to_right')]
 
 Str_range_1_32      = Annotated[str, Field(..., min_length=1, max_length=32)]
@@ -83,7 +83,7 @@ class BaseRandomORG(BaseModel):
     """
     apiKey: UUID4_api_key
 
-    def get_params(self) -> dict | Json:
+    def get_params(self) -> Union[dict, Json]:
         return self.model_dump(exclude={'method'})
 
 

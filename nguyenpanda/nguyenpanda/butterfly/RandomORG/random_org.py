@@ -5,7 +5,7 @@ Classe:
     RandomORG: A class for interacting with the Random.org API.
 """
 
-from typing import Any
+from typing import Any, Union, TypeVar, List
 
 import requests
 
@@ -36,6 +36,9 @@ from .random_org_validator import (
     IntSeq_max_min,
     Float_1M_Range,
 )
+
+T = TypeVar('T')
+ObjOrListOfObj = Union[List[T], T]
 
 # Constants for the Random.org API
 URL: str = "https://api.random.org/json-rpc/2/invoke"
@@ -190,7 +193,7 @@ class RandomORG:
 
         return result["result"]
 
-    def uuid4(self, _n: Int_range_1_10000) -> list[str] | str:
+    def uuid4(self, _n: Int_range_1_10000) -> ObjOrListOfObj[str]:
         """
         Generate UUIDs.
 
@@ -207,7 +210,7 @@ class RandomORG:
 
     def blobs(
         self, _n: Int_range_1_100, _size: int, _format: Format = "base64"
-    ) -> list[str] | str:
+    ) -> ObjOrListOfObj[str]:
         """
         Generate blobs of random binary data.
 
@@ -232,7 +235,7 @@ class RandomORG:
         _n: Int_range_1_10000,
         _length: Int_range_1_32,
         _characters: Str_range_1_32,
-    ) -> list[str] | str:
+    ) -> ObjOrListOfObj[str]:
         """
         Generate random strings.
 
@@ -256,7 +259,7 @@ class RandomORG:
 
     def decimal(
         self, _n: Int_range_1_10000, _decimal_places: Int_range_1_14
-    ) -> list[float] | float:
+    ) -> ObjOrListOfObj[float]:
         """
         Generate random decimal fractions.
 
@@ -280,7 +283,7 @@ class RandomORG:
         _mean: Float_1M_Range,
         _standard_deviation: Float_1M_Range,
         _significant_digits: Int_range_2_14,
-    ) -> list[float] | float:
+    ) -> ObjOrListOfObj[float]:
         """
         Generate random numbers following a Gaussian distribution.
 
@@ -311,7 +314,7 @@ class RandomORG:
         _min: Int_range_1B,
         _max: Int_range_1B,
         _base: Base = 10,
-    ) -> list[int] | int:
+    ) -> ObjOrListOfObj[int]:
         """
         Generate random integers within a specified range.
 
@@ -338,7 +341,7 @@ class RandomORG:
         _min: IntSeq_max_min,
         _max: IntSeq_max_min,
         _base: Base = 10,
-    ) -> list[int] | int:
+    ) -> ObjOrListOfObj[int]:
         """
         Generate sequences of random integers.
 

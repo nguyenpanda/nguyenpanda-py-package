@@ -3,7 +3,7 @@ import subprocess
 import zipfile
 from collections import deque
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 
 from typing_extensions import Self
 
@@ -11,6 +11,8 @@ from .exception import InvalidKaggleAPI, KaggleAuthenticationFailed
 from .google_colab import gcu
 from .jupyter_notebook import nbu
 from ..swan import green, yellow, red
+
+FilePath = Union[str, Path]
 
 if nbu.is_colab():
     from google.colab import files
@@ -51,7 +53,7 @@ class Dataset:
         return ('{}(name={}, in_colab={}, dataset_source_dir={})'.
                 format(self.__class__.__name__, self.name, self.in_colab, self.dataset_source_dir))
 
-    def kaggle(self, api: str, to_path: str | Path = Path.cwd(), verbose: bool = True) -> Self:
+    def kaggle(self, api: str, to_path: FilePath = Path.cwd(), verbose: bool = True) -> Self:
         """
         Downloads a dataset from Kaggle using the provided API command.
 
@@ -105,7 +107,7 @@ class Dataset:
 
         return self
 
-    def alias(self, source: Optional[str | Path] = None, destination: str | Path = Path.cwd(),
+    def alias(self, source: Optional[FilePath] = None, destination: FilePath = Path.cwd(),
               exist_ok: bool = False, verbose: bool = True) -> Self:
         """
         Creates a symbolic link (alias) to the dataset directory.
@@ -167,8 +169,8 @@ class Dataset:
         Returns:
             Optional[Path]: The path to the found directory if it exists, or None if not found.
         """
-        ignore = {'Library', 'Applications', 'bin', 'Documents', 'Movies', 'Music', 'Pictures',
-                  'venv', 'env', 'lib', 'build', 'cmake-build-debug', 'numpy'}
+        ignore = {'Library', 'Applications', 'bin', 'Documents', 'Movies', 'Music', 'Pictures', 'Program Files',
+                  'Program Files (x86)', 'venv', 'env', 'lib', 'build', 'cmake-build-debug', 'numpy'}
         exclude_extensions = {'.photoslibrary', '.ignore', '__', 'env'}
         exclude_prefix = {'.', '__', 'env'}
 

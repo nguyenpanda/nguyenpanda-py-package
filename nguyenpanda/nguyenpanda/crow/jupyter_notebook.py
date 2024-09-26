@@ -4,6 +4,8 @@ from typing import Union
 
 from ..swan import green, yellow, blue
 
+FilePath = Union[str, Path]
+
 
 class NoteBookUtils:
     """
@@ -12,7 +14,7 @@ class NoteBookUtils:
     """
 
     @classmethod
-    def create_alias(cls, source_path: str | Path, alias_name: str, alias_path: str | Path = Path.cwd(),
+    def create_alias(cls, source_path: FilePath, alias_name: str, alias_path: FilePath = Path.cwd(),
                      exist_ok: bool = False, verbose: bool = True) -> Path:
         """
         Creates a symbolic link (alias) to the specified source directory.

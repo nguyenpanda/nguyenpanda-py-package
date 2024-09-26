@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
 
 import random
+from typing import Union
 from pathlib import Path
 
 
-def plot_train_test_loss_accuracy(history: dict[str, list | tuple], **kwargs):
+def plot_train_test_loss_accuracy(history: dict[str, Union[list, tuple]], **kwargs):
     """
     Plots training and testing loss and accuracy over epochs.
 
