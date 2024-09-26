@@ -1,5 +1,5 @@
 from sys import stdout
-from typing import Dict, Literal, IO, Iterable
+from typing import Dict, Literal, IO, Iterable, Optional, Union
 from abc import ABC, abstractmethod
 import random
 
@@ -14,8 +14,8 @@ class BaseColor(ABC):
     def set_seed(self):
         pass
 
-    def print(self, *values: object, color: str | None = None, sep: str | None = ' ', end: str | None = '\n',
-              file: IO[str] | None = None, flush: Literal[False, True] = False) -> None:
+    def print(self, *values: object, color: Optional[str] = None, sep: Optional[str] = ' ', end: Optional[str] = '\n',
+              file: Optional[IO[str]] = None, flush: Literal[False, True] = False) -> None:
         """
         Prints the values to nguyenpanda stream, or to sys.stdout by default.
         If color is None, prints the values with random color.
@@ -61,7 +61,7 @@ class FourBitColor(BaseColor):
         'c': 6,  # CYAN
     }
 
-    def __init__(self, __seed: int | None = None, is_foreground: bool = True, is_bright: bool = True):
+    def __init__(self, __seed: Optional[int] = None, is_foreground: bool = True, is_bright: bool = True):
         """
         Initialize a new instance of ColorClass.
 
@@ -75,7 +75,7 @@ class FourBitColor(BaseColor):
         else:
             self.code = '\033[1;3{}m' if is_foreground else '\033[1;4{}m'
 
-    def __getitem__(self, color: Literal[' ', 'r', 'g', 'y', 'b', 'm', 'c'] | str | int | None) -> str:
+    def __getitem__(self, color: Union[Literal[' ', 'r', 'g', 'y', 'b', 'm', 'c'], str, int, None]) -> str:
         """
         Retrieve the ANSI code color (BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN) for a specified color key.
 
@@ -129,8 +129,8 @@ class EightBitColor(BaseColor):
             Generates a random 8-bit color code within the specified range.
     """
 
-    def __init__(self, color_range: tuple[int] | list[int] = (0, 255),
-                 is_foreground: bool = True, __seed: int | None = None):
+    def __init__(self, color_range: Union[tuple[int], list[int]] = (0, 255),
+                 is_foreground: bool = True, __seed: Optional[int] = None):
         """
         Initializes an 8-bit color object.
 
@@ -147,7 +147,7 @@ class EightBitColor(BaseColor):
         if not isinstance(self.range, (tuple, list)) or len(self.range) != 2:
             raise ValueError("color_range must be a tuple or list containing exactly two integers.")
 
-    def __getitem__(self, color: int | None) -> str:
+    def __getitem__(self, color: Optional[int]) -> str:
         """
         Retrieves the ANSI escape code for the given 8-bit color value.
 
@@ -196,7 +196,7 @@ class Two4BitColor(BaseColor):
             Generates a random 24-bit RGB color code.
     """
 
-    def __init__(self, is_foreground: bool = True, __seed: int | None = None):
+    def __init__(self, is_foreground: bool = True, __seed: Optional[int] = None):
         """
         Initializes a 24-bit color object.
 
@@ -206,7 +206,7 @@ class Two4BitColor(BaseColor):
         super().__init__(__seed, is_foreground)
         self.code = '\033[38;2;{};{};{}m' if is_foreground else '\033[48;2;{};{};{}m'
 
-    def __getitem__(self, rgb: int | str | Iterable[str] | Iterable[int] | Iterable[str | int]) -> str:
+    def __getitem__(self, rgb: Union[int, str, Iterable[str], Iterable[int], Iterable[Union[str, int]]]) -> str:
         """
         Retrieves the ANSI escape code for the given RGB color.
 
