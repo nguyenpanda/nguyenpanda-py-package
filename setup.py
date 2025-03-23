@@ -21,14 +21,12 @@ def list_all(file_name: str) -> list[str]:
 
 
 if __name__ == '__main__':
-    meta: dict = {}
-    with open(os.path.join('nguyenpanda', '__version__.py')) as file:
-        exec(file.read(), meta)
+    SRC = Path.cwd() / 'src'
+    PACKAGE_DIR = SRC / 'nguyenpanda'
 
-    print('\033[1;92mExporting README.md from inside to outside\033[0m')
-    with open(Path.cwd().parent / 'README.md', 'w') as out_read_me:
-        with open(Path.cwd() / 'README.md', 'r') as in_read_me:
-            out_read_me.write(in_read_me.read())
+    meta: dict = {}
+    with open(PACKAGE_DIR / '__version__.py', 'r') as file:
+        exec(file.read(), meta)
 
     print('\033[1;92mRunning setup function\033[0m')
     setup(
@@ -45,7 +43,7 @@ if __name__ == '__main__':
         packages=find_packages(),
         long_description=read('README.md'),
         long_description_content_type='text/markdown',
-        install_requires=list_all('requirements.txt'),
+        install_requires=list_all('requirements/requirements.txt'),
         project_urls={
             'Source Code': meta['__src__'],
         },
