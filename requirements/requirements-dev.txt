@@ -1,3 +1,5 @@
+build
+jupyter
 numpy
 matplotlib
 pydantic
